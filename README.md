@@ -42,7 +42,7 @@ then
 #kubectl expose deployment hello-minikube --type=NodePort --port=8080
 #kubectl port-forward service/hello-minikube 7080:8080
 #minikube dashboard
-
+```
 
 ### Top 20 Kubernetes Interview Questions
 ([source](https://medium.com/@croguerrero/top-20-kubernetes-interview-questions-e2fe0dcc6c52) (c) Christian Guerrero)
