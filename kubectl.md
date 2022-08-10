@@ -14,6 +14,9 @@
 ### 4. kubetail/papertrail
 ### 5. install lens and used shell from there ;-)
 ### 6. OhmyZSH kubectl extensions https://agrimprasad.com/post/supercharge-kubernetes-setup/
+### 7. kubectl proxy to access dashboard & api from your localhost:
+![image](https://user-images.githubusercontent.com/17558124/183903966-b01e5d77-f91f-4a1f-91d8-68da762af35b.png)
+
 
 
 Q:How to tail logs from all pods in a deployment?
