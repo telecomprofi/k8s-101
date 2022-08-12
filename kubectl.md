@@ -7,9 +7,15 @@ my top used kubectl commands:
 k get namespaces
 k get nodes
 k ged pods --all-namespaces
-k get deployemnts --
+k get deployemnts
+k get services
+k get ingress
+k get endpoints
+k logs <podname> -c <containername> -f (tail logs from specific container in the pod with sidecars)
+k logs -f -l app=alertmanager
 k config get-contexts
 k config use-namespace
+
 k top pod - cpu/mem usage on the pod
 k top nodes - same for nodes
 
