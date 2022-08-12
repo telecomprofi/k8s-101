@@ -41,7 +41,9 @@ k top nodes - same for nodes
 
 Q:How to tail logs from all pods in a deployment?
 A: use -l (label selector)  and -f for follow!
-```#kubectl logs -f -l app=example
+
+```
+#kubectl logs -f -l app=example
 ```
 Now each pod will print out its name along with the timestamp. If we want to watch all those different pods and the logs they’re producing, first use the kubectl log deployment/example. Sadly, this will only pick one of the pods. However, there’s a way to look at all of them. See the following:
 ```
