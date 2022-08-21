@@ -59,3 +59,14 @@ example-5bc8d9cddc-qppfk Tue Sep 1 11:47:06 UTC 2020
 ```
 The command takes a flag (-l / –selector) that lets you filter by label. Since we tag our deployment pods with the example label, we can see all of them. The -f / –follow flag then continuously prints out the message from those pods.
 
+### Q: How to get decoded content of secrets from the k8s cluster?
+A: there are two options:  
+one with well-formatted outpupt:
+```
+k get  secret <secretname>  --template='{{ range $key, $value := .data }}{{ printf "%s: %s\n" $key ($value | base64decode) }}{{ end }}'
+```
+another with just whole content as single line:
+```
+k get  secret <secretname> -o json | jq '.data | map_values(@base64d)'                                                                
+
+```
