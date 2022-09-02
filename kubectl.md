@@ -75,7 +75,7 @@ A:
 ```
 kubectl exec <pod-name> -- env
 
-``
+```
 ### Q: How to nicely visualize cluster?
 A: [kubeview](https://github.com/benc-uk/kubeview)
 ![image](https://user-images.githubusercontent.com/17558124/188221148-8f20ab39-7fe6-4243-ac57-e84ecc45d756.png)
