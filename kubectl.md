@@ -70,3 +70,9 @@ another with just whole content as single line:
 k get  secret <secretname> -o json | jq '.data | map_values(@base64d)'                                                                
 
 ```
+### Q: How to get env variables from pod?
+A: 
+```
+kubectl exec <pod-name> -- env
+``
+
