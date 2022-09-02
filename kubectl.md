@@ -74,5 +74,9 @@ k get  secret <secretname> -o json | jq '.data | map_values(@base64d)'
 A: 
 ```
 kubectl exec <pod-name> -- env
+
 ``
+### Q: How to nicely visualize cluster?
+A: [kubeview](https://github.com/benc-uk/kubeview)
+https://user-images.githubusercontent.com/14982936/53411103-87b68a00-39bd-11e9-81b2-df2fb9cd7b28.png
 
