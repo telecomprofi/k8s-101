@@ -7,6 +7,11 @@ kubectl set image deployment.apps/demo-app image=73570586743739.dkr.ecr.us-west-
 
 kubectl rollout status deployment.apps/demo-app
 ```
+stream (aka tail -f or monitor) log output from all new canary containers into console
+```
+kubectl logs -f -l name_canary=demo-app-canary --all-containers --max-log-requests=11 (# the last piece is to increase from default 5) | grep -i error
+```
+
 And if deployment fails (pods stuck, restarts etc) roll deployment back to previous 'stable' revision:
 ```
 kubectl rollout undo deployment.apps/demo-app --to-revision=2
