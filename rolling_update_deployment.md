@@ -21,16 +21,16 @@ kubectl rollout status deployment.apps/demo-app
 that's it folks :-)
 
 ### Option 2. Statefull app - need to think about node affinity when deploying new pods - to make sure pod will be spinned up on the same node.
-Statefull set update <tba>
+Statefull set update \<tba\>
   
  Option 3. Canary Deployment to production
   pre-requisites:
   HPA has to be disabled first and then re-enabled when new canary is stable
   If you need gradual traffic round-robin, you might need to increase number of 'stable replicas' in 'stable' deployment (think 1/10 of traffic will go to each pod if you have 10 replicas)
   create new deployemnt yaml with the 
-  - set deployment.name to <existing-deployment-name>-canary
+  - set deployment.name to \<existing-deployment-name\>-canary
   - same label as stable deployment  ex. name=demo-app
-  - add additional label name_canary=<existing-deployment-name>-canary for grouping purposes (kubectl get pods -l name_canary=demo-canary)
+  - add additional label name_canary=\<existing-deployment-name\>-canary for grouping purposes (kubectl get pods -l name_canary=demo-canary)
   - new image url  (tested locally and in dev, staging env)
   - number of replicas initially small (like 10% of total pod number)
   
