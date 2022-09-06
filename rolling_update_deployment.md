@@ -3,7 +3,8 @@
 ### Option 1. Stateless app, only container image was updated. No need to change configmaps, volumes, # of replicas:
 kubectl set image (do not forget to populate change cause - it wiil help you to roll back (rollout undo) to correct revision
 ```
-kubectl set image deployment.apps/demo-app image=73570586743739.dkr.ecr.us-west-2.amazonaws.com/demo-app:v3.0 kubectl annotate deployment.apps/demo-app kubernetes.io/change-cause="demo version changed from 2.0 to 3.0"
+kubectl set image deployments.apps/demo-app demo-app-container=623994936604.dkr.ecr.us-east-1.amazonaws.com/pbs-prebid-server:multitenancy-f73dccf --dry-run=client
+kubectl annotate deployment.apps/demo-app kubernetes.io/change-cause="demo version changed from 2.0 to 3.0"
 
 kubectl rollout status deployment.apps/demo-app
 ```
@@ -13,7 +14,9 @@ kubectl logs -f -l name_canary=demo-app-canary --all-containers --max-log-reques
 ```
 
 And if deployment fails (pods stuck, restarts etc) roll deployment back to previous 'stable' revision:
+
 ```
+kubectl rollout history deployment.apps/demo-app (lists revisions and change-cause as a table)
 kubectl rollout undo deployment.apps/demo-app --to-revision=2
 kubectl rollout status deployment.apps/demo-app
 ```
