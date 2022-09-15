@@ -50,5 +50,7 @@ kubectl scale deployement demo-app --replicase=9 (8, 7, 5, 2, 1, 0 up to minimum
 ```
   
   
+###[Rolling up and Rolling back apps on k8s](https://blog.saeloun.com/2022/06/06/kubernetes-rollback.html)
+  
   
 
