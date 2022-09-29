@@ -1,4 +1,4 @@
-## Troubleshoting Out of memory killngs of container processes inside pod on kubernetes worker node
+## Troubleshoting Out of memory killings of container processes inside pod on kubernetes worker node
 
 ### 1. Check CPU/Mem average load on the node with top
 ### 2. Identify process(es) that consume more memory than others, check dmesg for errors (like oom - 
@@ -10,7 +10,7 @@ and zombie processes
 ps -elf | grep Z
 ```
 ### 3. in oom messages from dmesg notice messagen consisting of two hashes:  
-'oom_memcg=/kubepods/burstable/pod5159b67a-e600-46f3-97d4-ead2586a7b2a/37a6a61a21ca760b00e6886381a7e2e5c88fad687dde884bd4103f830dae0767,task_memcg=/kubepods/burstable/pod5159b67a-e600-46f3-97d4-ead2586a7b2a/37a6a61a21ca760b00e6886381a7e2e5c88fad687dde884bd4103f830dae0767," like 
+'oom_memcg=/kubepods/burstable/pod5159b67a-e600-46f3-97d4-ead2586a7b2a/37a6a61a21ca760b00e6886381a7e2e5c88fad687dde884bd4103f830dae0767,task_memcg=/kubepods/burstable/pod5159b67a-e600-46f3-97d4-ead2586a7b2a/37a6a61a21ca760b00e6886381a7e2e5c88fad687dde884bd4103f830dae0767," - it has following format pod<pod-id-meta>/<container-id-meta>
 ```
 [20409.613189] php-fpm invoked oom-killer: gfp_mask=0xcc0(GFP_KERNEL), order=0, oom_score_adj=934
 [20409.627732] oom_reaper: reaped process 32055 (php-fpm), now anon-rss:0kB, file-rss:0kB, shmem-rss:19292kB
@@ -22,7 +22,7 @@ ps -elf | grep Z
 [20412.272559] php-fpm invoked oom-killer: gfp_mask=0xcc0(GFP_KERNEL), order=0, oom_score_adj=934
 [20412.316849]  oom_kill_process+0xd7/0x110
 ```
-### 4. on kubectl filter for the first has (after podxxxx) - it will give you info in which pod the prorblematic process runs as  container:
+### 4. on kubectl filter for the first hash (after podxxxx, before /) - it will give you info in which pod the prorblematic process runs as  container:
 ```
 kubectl get pod --all-namespaces -o json | jq '.items[] | select(.metadata.uid == "5159b67a-e600-46f3-97d4-ead2586a7b2a")' 
 ```
